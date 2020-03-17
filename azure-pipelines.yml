@@ -23,6 +23,6 @@ steps:
     tasks: 'distZip'
 - task: PublishPipelineArtifact@1
   inputs:
-    path: $(System.DefaultWorkingDirectory)build/distributions
+    path: $(System.DefaultWorkingDirectory)/build/distributions
     artifact: OMERO.insight-5.5.10-SNAPSHOT.zip
 
