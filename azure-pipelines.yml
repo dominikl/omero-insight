@@ -10,7 +10,19 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: from urllib.request import urlretrieve; urlretrieve('https://cdn.azul.com/zulu/bin/zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip', 'zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip')
 - task: Gradle@2
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: 'zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip'
+    jdkDestinationDirectory: '/builds/binaries/externals'
+    cleanDestinationDirectory: true
   inputs:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
