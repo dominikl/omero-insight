@@ -13,13 +13,13 @@ steps:
 - task: PythonScript@0
   inputs:
     scriptSource: 'inline'
-    script: from urllib.request import urlretrieve; urlretrieve('https://cdn.azul.com/zulu/bin/zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip', 'zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip')
+    script: from urllib.request import urlretrieve; urlretrieve('https://github.com/ojdkbuild/ojdkbuild/releases/download/1.8.0.191-1/java-1.8.0-openjdk-1.8.0.191-1.b12.ojdkbuild.windows.x86_64.zip', 'java-1.8.0-openjdk-1.8.0.191-1.b12.ojdkbuild.windows.x86_64.zip')
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '8'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'LocalDirectory'
-    jdkFile: 'zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip'
+    jdkFile: 'java-1.8.0-openjdk-1.8.0.191-1.b12.ojdkbuild.windows.x86_64.zip'
     jdkDestinationDirectory: '/java'
     cleanDestinationDirectory: true
 - task: Gradle@2
