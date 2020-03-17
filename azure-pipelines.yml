@@ -14,7 +14,6 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: from urllib.request import urlretrieve; urlretrieve('https://cdn.azul.com/zulu/bin/zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip', 'zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip')
-- task: Gradle@2
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
@@ -23,6 +22,7 @@ steps:
     jdkFile: 'zulu11.37.19-ca-fx-jdk11.0.6-win_x64.zip'
     jdkDestinationDirectory: '/builds/binaries/externals'
     cleanDestinationDirectory: true
+- task: Gradle@2
   inputs:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
