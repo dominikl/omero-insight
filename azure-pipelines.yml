@@ -27,7 +27,6 @@ steps:
     script: |
       choco install innosetup --version=5.6.1 --force
       choco install --force wixtoolset
-      ##vso[task.prependpath]$(WIX)bin
       echo '##vso[task.prependpath]$(WIX)bin'
 - task: CmdLine@2
   inputs:
