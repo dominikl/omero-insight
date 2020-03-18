@@ -27,15 +27,8 @@ steps:
     script: |
       choco install innosetup --version=5.6.1 --force
       choco install --force wixtoolset
-      PATH=%PATH%;%WIX%;%WIX%bin
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo %PATH%
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: 'export PATH=$PATH:$WIX:$WIX/bin'
+      ##vso[task.prependpath]$(WIX)bin
+      echo '##vso[task.prependpath]$(WIX)bin'
 - task: CmdLine@2
   inputs:
     script: |
