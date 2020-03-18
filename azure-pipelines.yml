@@ -26,16 +26,20 @@ steps:
   inputs:
     script: |
       choco install innosetup --version=5.6.1 --force
-      choco install --force wixtoolset 
+      choco install --force wixtoolset
+      PATH=%PATH%;%WIX%;%WIX%\bin
+      echo %PATH%
 - task: Gradle@2
   inputs:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
+    options: '--info --stacktrace'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     tasks: 'packageApplicationMsi'
+
 - task: PublishPipelineArtifact@1
   inputs:
     path: $(System.DefaultWorkingDirectory)/build/distributions
