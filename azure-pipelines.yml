@@ -14,7 +14,7 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: from urllib.request import urlretrieve; urlretrieve('https://cdn.azul.com/zulu/bin/zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip', 'zulu8.44.0.13-ca-fx-jdk8.0.242-win_x64.zip')
-- task: JavaToolInstaller@1
+- task: JavaToolInstaller@0
   inputs:
     versionSpec: '8'
     jdkArchitectureOption: 'x64'
@@ -28,19 +28,19 @@ steps:
       choco install innosetup --version=5.6.1 --force
       choco install --force wixtoolset
       PATH=%PATH%;%WIX%;%WIX%bin
-- task: CmdLine@3
+- task: CmdLine@2
   inputs:
     script: |
       echo %PATH%
-- task: Bash@4
+- task: Bash@3
   inputs:
     targetType: 'inline'
     script: 'export PATH=$PATH:$WIX:$WIX/bin'
-- task: CmdLine@5
+- task: CmdLine@2
   inputs:
     script: |
       echo %PATH%
-- task: Gradle@6
+- task: Gradle@2
   inputs:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
@@ -51,7 +51,7 @@ steps:
     jdkArchitectureOption: 'x64'
     tasks: 'packageApplicationMsi'
 
-- task: PublishPipelineArtifact@7
+- task: PublishPipelineArtifact@1
   inputs:
     path: $(System.DefaultWorkingDirectory)/build/distributions
     artifact: OMERO.insight-5.5.10-SNAPSHOT.msi
