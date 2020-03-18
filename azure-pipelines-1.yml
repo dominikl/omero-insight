@@ -28,7 +28,7 @@ steps:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    options: '--info'
+    options: '--info --stacktrace'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11' # 1.8
     jdkArchitectureOption: 'x64'
